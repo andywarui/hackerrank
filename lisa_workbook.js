@@ -32,29 +32,24 @@ function readLine() {
  *  3. INTEGER_ARRAY arr
  */
 
+/*Solution here*/
 function workbook(n, k, arr) {
-    let page = 1; // initialize the current page to 1
-    let specialProblems = 0; // initialize the number of special problems to 0
-    
-    for (let i = 0; i < n; i++) { // loop through each chapter
-      const problems = arr[i]; // get the number of problems in the current chapter
-      let problem = 1; // initialize the current problem to 1
-      
-      while (problem <= problems) { // loop through each problem in the chapter
-        if (problem === page) { // if the problem number matches the current page, it is a special problem
-          specialProblems++; // increment the number of special problems
+    let result = 0;
+    let page = 1;
+    for (let i =0; i <= arr.length; i++) {
+        let problemsChapter = arr[i];
+        for (let j = 1; j <= problemsChapter; j++) {
+            if (j === page) {
+                result++;
+            }
+            if (j !== problemsChapter && j % k === 0) {
+                page++;
+            }
         }
-        
-        if (problem % k === 0 || problem === problems) { // if the current problem is the last problem in a page, move to the next page
-          page++; // increment the current page
-        }
-        
-        problem++; // move to the next problem in the chapter
-      }
+        page++;
     }
-    
-    return specialProblems; // return the number of special problems
-  }
+   return result;
+}
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
