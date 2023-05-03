@@ -1,2 +1,2 @@
 # hackerrank
-Hacker Rank Chaleenges - Algorithms
+Hacker Rank Challenge - Algorithms
